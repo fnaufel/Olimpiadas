@@ -1,13 +1,24 @@
 Package: Olimpiadas
-Title: What the Package Does (One Line, Title Case)
+Title: Atividades de análise de dados sobre as Olimpíadas
 Version: 0.0.0.9000
 Authors@R: 
     person("Fernando", "Naufel", , "fnaufel@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: Instala pacotes necessários para resolver as questões do enunciado.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 URL: https://github.com/fnaufel/Olimpiadas
 BugReports: https://github.com/fnaufel/Olimpiadas/issues
+Imports: 
+    knitr,
+    rmarkdown,
+    rmdformat (>= 0.0.0.9000),
+    scales,
+    summarytools
+Remotes: 
+    fnaufel/rmdformat
+Depends: 
+    R (>= 2.10),
+    tidyverse
+LazyData: true

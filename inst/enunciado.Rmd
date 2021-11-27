@@ -1,0 +1,192 @@
+---
+title: 'Jogos Olímpicos de Verão'
+author: '?????????????'
+date: '(v. `r format(Sys.Date(), "%d/%m/%Y")`)'
+lang: 'pt'
+output: rmdformat::fnaufel_rmd_format
+# To install this format, enter
+#   install.packages("devtools")
+#   devtools::install_github("fnaufel/rmdformat")
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+
+opts_chunk$set(
+  echo = TRUE, 
+  # collapse = TRUE,
+  # cache = TRUE,
+  out.width = "90%",
+  fig.align = 'center',
+  fig.width = 7,
+  fig.show = "hold"
+)
+
+# Supress crayon output
+options(crayon.enabled = FALSE)
+
+options(
+  # Avoid scientific notation
+  scipen = 15,
+  # Use a comma as decimal separator
+  OutDec = ',',
+  # Number of decimal digits for numbers produced by inline R code
+  fmdigits = 2
+)
+
+# Useful libraries
+library(kableExtra)
+options(knitr.kable.NA = '')
+
+# For nice dataframe summaries
+library(summarytools)
+st_options(
+  plain.ascii = FALSE,
+  dfSummary.style = 'grid',
+  dfSummary.varnumbers = FALSE,
+  dfSummary.valid.col = FALSE,
+  dfSummary.graph.col = is_html_output(),
+  headings = FALSE,
+  dfSummary.graph.magnif = 1,
+  # tmp.img.dir = 'dsimg',
+  lang = 'pt',
+  subtitle.emphasis = FALSE
+)
+
+# Tidy!
+library(tidyverse)
+library(scales)
+
+# Useful functions provided by the rmdformat package
+# 
+# Execute 
+# 
+#   cat(system.file("rmarkdown/resources/common.R", package = "rmdformat"))
+# 
+# to see the location of the file
+source(
+  system.file(
+    "rmarkdown/resources/common.R",
+    package = "rmdformat"
+  )
+)
+```
+
+
+# Instruções
+
+* Fique à vontade para consultar os coleguinhas, mas não copie as respostas deles. Se eu achar que você copiou, vamos ter uma entrevista síncrona, por vídeo, com horas de duração, para que eu tenha certeza de que você sabe o que fez.
+
+* Entregue [(via Moodle) este arquivo .Rmd]{.hl} com suas respostas. Não esqueça de colocar o seu nome no campo `author`, no início do arquivo.
+
+* Além do arquivo .Rmd, entregue também [(via Moodle)]{.hl} um arquivo contendo um vídeo de no máximo 5 minutos onde você explica em detalhes a resolução de uma das suas questões.
+
+* Todos os gráficos devem ser feitos com o pacote `ggplot2`.
+
+* Todos os gráficos devem incluir títulos, rótulos, legendas, e outros elementos para facilitar a compreensão. Imagine que seus gráficos serão publicados em uma revista.
+
+* Bom trabalho.
+
+
+# Sumário
+
+Nesta atividade, você vai trabalhar com o conjunto de dados `atletas`.
+
+1. Entre `?atletas` para ver a documentação.
+
+1. Use `glimpse(atletas)` para ver a estrutura da *tibble*.
+
+1. Use a função `dfSummary`, do pacote `summaryTools`, para ver um sumário mais detalhado da *tibble*.
+
+
+# Idades e esportes
+
+Nesta seção, você vai explorar os dados, mas sem gerar gráficos.
+
+1. Qual a idade dos atletas mais jovens? Quem são? De onde são? Em que ano competiram? Em que esportes? Ganharam medalha? Use a função `slice_min`.
+
+1. Qual a idade dos atletas mais velhos? Quem são? De onde são? Em que ano competiram? Em que esportes? Ganharam medalha? Use a função `slice_max`.
+
+1. Aposto que você não sabia que havia competição de artes nas Olimpíadas! Até que ano isto aconteceu?
+
+1. Quais eram os eventos das competições de artes? Use a função `distinct`.
+
+1. Elimine do *data frame* as linhas relativas a artes:
+
+1. Quais as idades mínima e máxima agora?
+
+1. Quais os dados dos atletas que têm a idade máxima?
+
+1. Quais os atletas mais jovens a ganhar medalha? De onde são? Em que anos ganharam? Em que esportes? Quais medalhas?
+
+1. Quais os atletas mais velhos a ganhar medalha? De onde são? Em que anos ganharam? Em que esportes? Quais medalhas?
+
+
+# *Scatterplots*
+
+1. Usando `group_by` e `summarize`, crie o *data frame* `medalhas_atletas` com as colunas `pais`, `ano`, `atletas` (total de atletas do país naquele ano) e `medalhas` (total de medalhas do país naquele ano). Descarte os registros onde o número de medalhas é menor que $50$.
+
+1. Gere um *scatterplot* de número de medalhas por número de atletas. Use `geom_smooth` para traçar uma reta de regressão. Comente o resultado.
+
+1. Facete o *scatterplot* anterior por ano. Disponha os subgráficos em $3$ linhas e $6$ colunas.
+
+1. Como você interpreta as diferentes quantidades de pontos em cada subgráfico?
+
+1. Houve uma única vez em que um país ganhou mais de $400$ medalhas em um ano. Descubra o que aconteceu para facilitar essa ocorrência.
+
+1. [Considere agora apenas os registros onde `medalhas` é maior que $200$.]{.hl} Faça um *scatterplot* de número de medalhas por número de atletas, onde cada ponto é colorido de acordo com o país. Aumente o tamanho de todos os pontos para facilitar a leitura. [Não]{.hl} gere a reta de regressão. Comente o resultado.
+
+
+# Histogramas
+
+1. Usando o *data frame* `atletas` [(sem as artes)]{.hl}, gere um histograma das idades de todos os atletas, com classes de $5$ anos de largura.
+
+1. Faça a mesma coisa, mas apenas para idades maiores ou iguais a $55$ anos.
+
+1. Gere dois histogramas [de todas as idades]{.hl}, [por sexo]{.hl}, com classes de $5$ anos de largura. Use `facet_wrap`.
+
+1. Comente o resultado, sobretudo nas idades abaixo de $20$ anos. Por que você acha que acontece isso? Analise os dados como você achar mais adequado para confirmar ou refutar sua hipótese.
+
+1. Quais são os esportes com a menor idade [média]{.hl} e a maior idade [média]{.hl}? Use `group_by` e `summarize`. Ignore os valores `NA` na hora de computar a média (veja a ajuda da função `mean`).
+
+1. Quais são os esportes com a menor idade [mediana]{.hl} e a maior idade [mediana]{.hl}? Use `group_by` e `summarize`. Ignore os valores `NA` na hora de computar a mediana (veja a ajuda da função `median`).
+
+1. [Usando somente os atletas dos esportes com menor idade média e maior idade média (achados acima),]{.hl} gere dois histogramas das idades, por esporte, com classes de $5$ anos. Use `facet_wrap`.
+
+1. Repita o item anterior, desta vez usando `facet_grid` em vez de `facet_wrap`, para gerar $4$ histogramas, cada um com um esporte e um sexo. Comente o resultado.
+
+
+# *Boxplots*
+
+1. Gere *boxplots* lado a lado, um *boxplot* por ano, para as alturas de todos os atletas. Comente o resultado.
+
+1. Repita o item anterior, facetando por sexo. Use `coord_flip`. Comente os resultados.
+
+1. Gere dois *boxplots* lado a lado, um para os brasileiros (BRA), um para os holandeses (NED), para as alturas dos atletas. Comente o resultado.
+
+1. Repita o item anterior, facetando por sexo. Comente os resultados.
+
+
+# Gráficos de barras
+
+1. Gere um gráfico de barras [horizontais]{.hl} com as quantidades de medalhas de ouro dos $10$ países que ganharam mais medalhas de ouro [nas olimpíadas de $2016$]{.hl}. Coloque as barras em ordem decrescente.
+
+1. Gere um gráfico de barras para as quantidades totais de medalhas do Brasil, por ano. No eixo $x$, coloque rótulos para [todos]{.hl} os anos de Olimpíada desde $1948$. Para os rótulos ficarem legíveis, use `coord_flip`.
+
+1. Repita o item anterior, com duas barras lado a lado por ano, uma para cada sexo. O que você nota de estranho no resultado? 
+
+::: {.rmdimportant latex=1}
+
+[**DESAFIO:**]{.hl} Qual foi o primeiro ano em que cada país teve uma atleta do sexo feminino ganhando uma medalha? Construa um *data frame*. O resultado terá $98$ linhas.
+
+:::
+
+
+# Gráficos de linha
+
+1. Faça um gráfico de linha com os totais de atletas que o Brasil enviou a cada Olimpíada. Sobreponha pontos à linha. No eixo $x$, coloque rótulos para [todos]{.hl} os anos de Olimpíada desde $1948$. Para os rótulos ficarem legíveis, gire-os em $45$ graus.
+
+1. Acrescente ao gráfico do item anterior uma linha de outra cor, também com pontos, com as quantidades de medalhas obtidas pelo Brasil a cada ano. As cores das linhas devem aparecer na legenda, com as identificações "atletas" e "medalhas".
+
+1. Calcule, para cada ano, o percentual de medalhas ganhas em relação ao total de participações de atletas brasileiros. Gere um gráfico de linha com pontos sobrepostos. No eixo $x$, coloque rótulos para [todas]{.hl} os anos de Olimpíada desde $1948$. Para os rótulos ficarem legíveis, gire-os em $45$ graus. Use o pacote `scales` para rotular o eixo $y$ com percentagens.
+
