@@ -9,8 +9,8 @@
 Primeira atividade avaliativa de Probabilidade e Estatística em 2021.2.
 
 Para obter os enunciados das questões, você precisa instalar este
-pacote, que também vai garantir que os pacotes necessários para a
-resolução também sejam instalados.
+pacote, que vai garantir que os pacotes necessários para a resolução 
+também sejam instalados.
 
 ## Instalação
 
