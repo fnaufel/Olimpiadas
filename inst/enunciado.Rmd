@@ -73,7 +73,9 @@ source(
 ```
 
 
-# Instruções
+::: {.rmdimportant latex=1}
+
+[**INSTRUÇÕES**]{.hl}
 
 * Fique à vontade para consultar os coleguinhas, mas não copie as respostas deles. Se eu achar que você copiou, vamos ter uma entrevista síncrona, por vídeo, com horas de duração, para que eu tenha certeza de que você sabe o que fez.
 
@@ -83,9 +85,13 @@ source(
 
 * Todos os gráficos devem ser feitos com o pacote `ggplot2`.
 
-* Todos os gráficos devem incluir títulos, rótulos, legendas, e outros elementos para facilitar a compreensão. Imagine que seus gráficos serão publicados em uma revista.
+* Todos os gráficos devem incluir títulos, rótulos, legendas (quando necessárias), e outros elementos para facilitar a compreensão. Imagine que seus gráficos serão publicados em uma revista.
+
+* Trate o texto e o código com o mesmo cuidado. Use parágrafos no texto e indentação e quebras de linha no código. [A legibilidade do texto e do código também fazem parte da apresentação.]{.hl}
 
 * Bom trabalho.
+
+:::
 
 
 # Sumário
@@ -124,9 +130,9 @@ Nesta seção, você vai explorar os dados, mas sem gerar gráficos.
 
 # *Scatterplots*
 
-1. Usando `group_by` e `summarize`, crie o *data frame* `medalhas_atletas` com as colunas `pais`, `ano`, `atletas` (total de atletas do país naquele ano) e `medalhas` (total de medalhas do país naquele ano). Descarte os registros onde o número de medalhas é menor que $50$.
+1. Usando `group_by` e `summarize`, crie o *data frame* `medalhas_atletas` com as colunas `pais`, `ano`, `atletas` (total de participações do país naquele ano) e `medalhas` (total de medalhas do país naquele ano). Descarte os registros onde o número de medalhas é menor que $50$.
 
-1. Gere um *scatterplot* de número de medalhas por número de atletas. Use `geom_smooth` para traçar uma reta de regressão. Comente o resultado.
+1. Gere um *scatterplot* de número de medalhas por número de participações. Use `geom_smooth` para traçar uma reta de regressão. Comente o resultado.
 
 1. Facete o *scatterplot* anterior por ano. Disponha os subgráficos em $3$ linhas e $6$ colunas.
 
@@ -134,7 +140,7 @@ Nesta seção, você vai explorar os dados, mas sem gerar gráficos.
 
 1. Houve uma única vez em que um país ganhou mais de $400$ medalhas em um ano. Descubra o que aconteceu para facilitar essa ocorrência.
 
-1. [Considere agora apenas os registros onde `medalhas` é maior que $200$.]{.hl} Faça um *scatterplot* de número de medalhas por número de atletas, onde cada ponto é colorido de acordo com o país. Aumente o tamanho de todos os pontos para facilitar a leitura. [Não]{.hl} gere a reta de regressão. Comente o resultado.
+1. [Considere agora apenas os registros onde `medalhas` é maior que $200$.]{.hl} Faça um *scatterplot* de número de medalhas por número de participações, onde cada ponto é colorido de acordo com o país. Aumente o tamanho de todos os pontos para facilitar a leitura. [Não]{.hl} gere a reta de regressão. Comente o resultado.
 
 
 # Histogramas
