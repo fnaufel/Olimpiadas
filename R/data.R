@@ -1,4 +1,4 @@
-#' Jogos olímpicos de verão: 1896 até 2016
+#' Jogos olímpicos de verão: 1948 até 2016
 #'
 #' Dados sobre participações de atletas nos jogos olímpicos de verão. Cada atleta pode aparecer em diversas linhas, uma linha para cada participação.
 #'

@@ -3,7 +3,7 @@
 \docType{data}
 \name{atletas}
 \alias{atletas}
-\title{Jogos olímpicos de verão: 1896 até 2016}
+\title{Jogos olímpicos de verão: 1948 até 2016}
 \format{
 Uma tibble com 186.069 linhas e 12 variáveis. Os nomes das variáveis estão em português, mas os valores estão em inglês.
 \describe{
